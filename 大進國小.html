@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>花蓮縣光復鄉大進國小 3D校園導覽</title>
+    <!-- 引入 A-Frame 3D 引擎 -->
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene background="color: #87CEEB">
+      
+      <!-- 資源管理 (顏色定義) -->
+      <a-assets>
+        <mixin id="wall" material="color: #FFF8DC; roughnes: 0.8"></mixin> <!-- 米色牆 -->
+        <mixin id="roof" material="color: #CD5C5C"></mixin> <!-- 屋頂 -->
+        <mixin id="admin" material="color: #FFD700"></mixin> <!-- 行政金 -->
+        <mixin id="room" material="color: #F0E68C"></mixin> <!-- 教室黃 -->
+        <mixin id="special" material="color: #FFA07A"></mixin> <!-- 專科紅 -->
+        <mixin id="court" material="color: #9370DB"></mixin> <!-- 球場紫 -->
+      </a-assets>
+
+      <!-- === 環境設置 === -->
+      <!-- 地板 (草地) -->
+      <a-plane position="0 0 0" rotation="-90 0 0" width="200" height="150" color="#90EE90" shadow></a-plane>
+      <!-- 街道標示 -->
+      <a-text value="Tang Chang St. (Top)" position="0 2 -65" align="center" color="black" scale="5 5 5"></a-text>
+      <a-text value="Fu Xing St. (Left)" position="-85 2 0" rotation="0 90 0" align="center" color="black" scale="5 5 5"></a-text>
+      <!-- 北方指示 (右邊) -->
+      <a-cone position="80 5 -60" rotation="0 0 -90" radius-bottom="2" height="5" color="red"></a-cone>
+      <a-text value="N" position="90 5 -60" align="center" color="red" scale="5 5 5"></a-text>
+
+      <!-- === 1. 上方校舍區 (主教學樓) === -->
+      <!-- 為了簡化，將其分為幾個大區塊 -->
+      <a-entity position="0 0 -50">
+        
+        <!-- 上排建築 (長條) -->
+        <a-box position="0 4 0" width="120" height="8" depth="10" color="#F5F5DC" shadow></a-box>
+        <!-- 屋頂 -->
+        <a-cone position="0 9 0" radius-bottom="10" height="4" scale="6 1 0.7" rotation="0 0 0" material="color: #B22222"></a-cone>
+        
+        <!-- 標籤文字 (懸浮在建築前) -->
+        <a-text value="Restroom" position="-55 5 6" color="blue" align="center"></a-text>
+        <a-text value="Teachers Room" position="-40 5 6" color="black" align="center"></a-text>
+        <a-text value="Principal / Admin" position="0 5 6" color="red" align="center" scale="1.5 1.5 1.5"></a-text>
+        <a-text value="Classrooms 6A" position="40 5 6" color="black" align="center"></a-text>
+        
+        <!-- 川堂/大門 -->
+        <a-box position="20 0 6" width="10" height="0.2" depth="5" color="grey"></a-box>
+        <a-text value="Main Gate" position="20 2 8" color="black" align="center"></a-text>
+
+        <!-- 下排建築 (並列) -->
+        <a-box position="0 4 12" width="120" height="8" depth="10" color="#EEE8AA" shadow></a-box>
+        <a-text value="Health Center" position="10 5 18" rotation="0 180 0" color="red" align="center"></a-text>
+        <a-text value="Classrooms 1A-5A" position="-20 5 18" rotation="0 180 0" color="black" align="center"></a-text>
+      </a-entity>
+
+      <!-- === 2. 左側建築區 (活動中心/廚房) === -->
+      <a-entity position="-70 0 10">
+        <!-- 大進活動中心 (較高) -->
+        <a-box position="0 6 -30" width="15" height="12" depth="30" color="#FFA07A"></a-box>
+        <a-text value="Activity Center" position="8 6 -30" rotation="0 90 0" color="black" align="center"></a-text>
+        
+        <!-- 禮堂/圖書室 -->
+        <a-box position="0 5 5" width="15" height="10" depth="30" color="#FFD700"></a-box>
+        <a-text value="Library / Hall" position="8 5 5" rotation="0 90 0" color="black" align="center"></a-text>
+        
+        <!-- 中央廚房 -->
+        <a-box position="0 4 35" width="15" height="8" depth="20" color="#ADD8E6"></a-box>
+        <a-text value="Central Kitchen" position="8 4 35" rotation="0 90 0" color="black" align="center"></a-text>
+      </a-entity>
+
+      <!-- === 3. 中間運動場 === -->
+      <a-entity position="10 0.1 10">
+        <!-- 紅色跑道 -->
+        <a-ring position="0 0 0" rotation="-90 0 0" radius-inner="25" radius-outer="32" color="#FF69B4"></a-ring>
+        <!-- 內部草地 -->
+        <a-circle position="0 0 0" rotation="-90 0 0" radius="24" color="#32CD32"></a-circle>
+        <!-- 籃球場 (中間) -->
+        <a-plane position="-5 0.1 0" rotation="-90 0 0" width="15" height="24" color="#4169E1"></a-plane>
+        <a-text value="Basketball" position="-5 2 0" rotation="-90 0 0" align="center"></a-text>
+      </a-entity>
+
+      <!-- 遊樂區 -->
+      <a-cylinder position="-30 0.5 0" radius="6" height="0.5" color="#9370DB"></a-cylinder>
+      <a-text value="Playground (Low)" position="-30 3 0" align="center" color="black"></a-text>
+      
+      <a-cylinder position="55 0.5 0" radius="8" height="0.5" color="#9370DB"></a-cylinder>
+      <a-text value="Playground (High)" position="55 3 0" align="center" color="black"></a-text>
+
+      <!-- === 4. 下方區域 === -->
+      <a-entity position="0 0 55">
+        <!-- 綜合球場 (紫) -->
+        <a-plane position="-20 0.1 0" rotation="-90 0 0" width="40" height="20" color="#9370DB"></a-plane>
+        <a-text value="Multi-Court" position="-20 2 0" rotation="-45 0 0" align="center" color="white"></a-text>
+        
+        <!-- 幼兒園設施 -->
+        <a-box position="15 1 0" width="10" height="2" depth="10" color="pink"></a-box>
+        
+        <!-- 司令台 -->
+        <a-cylinder position="35 1.5 0" segments-radial="6" radius="5" height="3" color="#F4A460"></a-cylinder>
+        <a-text value="Stage" position="35 4 0" align="center" color="black" scale="2 2 2"></a-text>
+      </a-entity>
+
+      <!-- === 攝影機 / 玩家視角 === -->
+      <!-- 預設位置在空中俯瞰，方便看全景 -->
+      <a-entity id="rig" position="0 40 80" rotation="-30 0 0">
+        <a-camera look-controls wasd-controls="acceleration: 200">
+            <a-cursor></a-cursor>
+        </a-camera>
+      </a-entity>
+
+    </a-scene>
+  </body>
+</html>
